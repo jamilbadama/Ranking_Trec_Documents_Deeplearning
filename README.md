@@ -6,7 +6,7 @@ $ pip install -r requirements.txt
  
 
  
- # Ranking of 2018 Precision Medicine Track using attention-based deep learning 
+ # Ranking Algorithm
 
 This code used the contextualized word embedding of the documents and user queries combined with genetic information to find contextual similarity using BM25 based search engine for determining the relevancy score to rank the articles
  
