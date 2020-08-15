@@ -35,9 +35,9 @@ Then classify the new data using trained model
 
 To get the documents ranking based proposed method, run the function with parameters 
 
-'''
+```
 query_ranking("melanoma", 1, "64-year-old male", "BRAF (V600E)", 10)
-'''
+```
 topic: Target topic such as melanoma
 index: Query Number such as 1
 query: Query such as 64-year-old male
