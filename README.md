@@ -22,12 +22,27 @@ pip3 install -r requirements.txt
 
 **Step 2**: Download the dataset(s) you intend to use and re-create embedding from Precision Medicine Tracks
 
-classify the dataset based on targert diseases using different deep learning models given in the code by simply train the model and use it for classification.
+To Classify the dataset based on targert diseases using different deep learning models given in the code by simply train the model and use it for classification.
 
 For example to train CNN model just run the  
 ```
 python train_cnn_model.py
 
 ```
+Then classify the new data using trained model
 
-**Step 3**: Run the Query on freetrained embedding on  2018 Precision Medicine Tracks dataset
+**Step 3**: Run the Query on pretrained embedding using 2018 Precision Medicine Tracks dataset
+
+To get the documents ranking based proposed method, run the function with parameters 
+
+'''
+query_ranking("melanoma", 1, "64-year-old male", "BRAF (V600E)", 10)
+'''
+topic: Target topic such as melanoma
+index: Query Number such as 1
+query: Query such as 64-year-old male
+gene: Gene data such as BRAF (V600E)
+topk: Number of top document you want to return
+
+
+
