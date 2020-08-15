@@ -24,9 +24,9 @@ pip3 install -r requirements.txt
 
 To Classify the dataset based on targert diseases using different deep learning models given in the code by simply train the model and use it for classification.
 
-For example to train CNN model just run the  
+For example to train BERT model run the bert model file
 ```
-python train_cnn_model.py
+python train_bert_model.py
 
 ```
 Then classify the new data using trained model
