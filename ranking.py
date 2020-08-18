@@ -4,7 +4,7 @@ import pandas as pd
 import nltk.data
 import pickle
 from sentence_transformers import SentenceTransformer
-from rank_bm25 import BM25Okapi, BM25L, BM25Plus
+from rank_bm25 import BM25Okapi
 
 
 def load_csv_dataset():
@@ -121,19 +121,11 @@ def query_ranking(topic, index, query, gene, topk=10):
         i = i + 1
         score = score_corpus[idx] + BM25_Score[idx]
         print(index, '0', NCT_ID[idx], 1)
-        with open('data/Ranking_CWE_BM25_results_1.csv', 'a', newline='') as csvfile:
+        with open('data/Ranking_CWE_BM25_results_2.csv', 'a', newline='') as csvfile:
             fieldnames = ['QueryNum', 'Q0', 'NCT_ID', 'Score', ]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-            cal_score = 0
-            if score > 4.0 and score < 5.0:
-                cal_score = 1
-            elif score > 5.0 and score < 10.0:
-                cal_score = 2
-            else:
-                cal_score = 0
-
             writer.writerow({'QueryNum': index, 'Q0': '0', 'NCT_ID': NCT_ID[idx], 'Score': score})
 
 if __name__ == '__main__':
     for index, row in queries.iterrows():
-        print(query_ranking("Melanoma", index + 1, row["Query"], row["Gene"], 1000))
+        print(query_ranking("all data", index + 1, row["Query"], row["Gene"], 1000))

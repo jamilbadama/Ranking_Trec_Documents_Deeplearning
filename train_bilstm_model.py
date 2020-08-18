@@ -1,13 +1,11 @@
 import argparse
 import tensorflow as tf
-import build_model
-import explore_data
-import load_data
-import vectorize_data
+import model_building
+import data_loader
+import data_vecterization
 
 FLAGS = None
-# Limit on the number of features. We use the top 20K features.
-TOP_K = 20000
+topk = 20000
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import classification_report
 
@@ -19,33 +17,27 @@ def train_bilstm_model(data,
                        embedding_dim=100):
     (train_texts, train_labels), (val_texts, val_labels), (train, test), (target_names) = data
 
-    # Verify that validation labels are in the same range as training labels.
-    num_classes = explore_data.get_num_classes(train_labels)
+    num_labels = len(target_names)
 
-    unexpected_labels = [v for v in val_labels if v not in range(num_classes)]
+    unexpected_labels = [v for v in val_labels if v not in range(num_labels)]
     if len(unexpected_labels):
         raise ValueError('Unexpected label values found in the validation set:'
                          ' {unexpected_labels}. Please make sure that the '
                          'labels in the validation set are in the same range '
                          'as training labels.'.format(
             unexpected_labels=unexpected_labels))
-
-    # Vectorize texts.
-    x_train, x_val, word_index = vectorize_data.sequence_vectorize(
+    x_train, x_val, word_index = data_vecterization.vectorize_by_sequence(
         train_texts, val_texts)
-    # Number of features will be the embedding input dimension. Add 1 for the
-    # reserved index 0.
-    num_features = min(len(word_index) + 1, TOP_K)
 
-    # Create model instance.
-    model = build_model.biLstm_model(embedding_dim=embedding_dim,
-                         dropout_rate=dropout_rate,
-                         input_shape=x_train.shape[1:],
-                         num_classes=num_classes,
-                         num_features=num_features)
+    num_features = min(len(word_index) + 1, topk)
 
-    # Compile model with learning parameters.
-    if num_classes == 2:
+    model = model_building.biLstm_model(embedding_dim=embedding_dim,
+                                        dropout_rate=dropout_rate,
+                                        input_shape=x_train.shape[1:],
+                                        num_classes=num_labels,
+                                        num_features=num_features)
+
+    if num_labels == 2:
         loss = 'binary_crossentropy'
     else:
         loss = 'sparse_categorical_crossentropy'
@@ -54,8 +46,7 @@ def train_bilstm_model(data,
     model.compile(optimizer=optimizer, loss=loss, metrics=['accuracy'])
     model.summary()
 
-    # Train and validate model.
-    history = model.fit(
+    model.fit(
         x_train,
         train_labels,
         epochs=epochs,
@@ -73,15 +64,12 @@ def train_bilstm_model(data,
     print('Accuracy: %f' % accuracy)
     print(classification_report(val_labels, yhat_classes, target_names=target_names))
 
-    # Save model.
     model.save('data/models/bilstm_model.model')
-    return history
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--data_dir', type=str, default='./data/dataset',
-                        help='input data directory')
+    parser.add_argument('--data_dir', type=str, default='./data/dataset')
     FLAGS, unparsed = parser.parse_known_args()
-    data = load_data.load_csv_dataset(FLAGS.data_dir)
+    data = data_loader.load_csv_dataset(FLAGS.data_dir)
     train_bilstm_model(data)

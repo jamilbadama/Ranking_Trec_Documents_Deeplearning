@@ -1,14 +1,14 @@
 import argparse
 from sklearn import metrics
 from sklearn.metrics import classification_report
-import build_model
-import load_data
+import model_building
+import data_loader
 
 MAX_SEQ_LEN = 128
 def train_bert_model(data):
 
     (train_texts, train_labels),(val_texts,val_labels),(train,test),(target_names) = data
-    model = build_model.bert_model()
+    model = model_building.bert_model()
     model = model.fit(train_texts, train_labels)
     # Save model.
     model.save('data/models/bertmodel.model')
@@ -28,8 +28,7 @@ def train_bert_model(data):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--data_dir', type=str, default='./data/dataset',
-                        help='input data directory')
+    parser.add_argument('--data_dir', type=str, default='./data/dataset')
     FLAGS, unparsed = parser.parse_known_args()
-    data = load_data.load_csv_dataset(FLAGS.data_dir)
+    data = data_loader.load_csv_dataset(FLAGS.data_dir)
     train_bert_model(data)

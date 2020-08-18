@@ -1,5 +1,3 @@
-"""Module to create model."""
-
 from tensorflow.keras import models
 from tensorflow.keras.layers import Bidirectional
 from tensorflow.keras.layers import Dense
@@ -33,28 +31,13 @@ def cnn_model(blocks,
               dropout_rate,
               pool_size,
               input_shape,
-              num_classes,
-              num_features,
-              use_pretrained_embedding=False,
-              is_embedding_trainable=False,
-              embedding_matrix=None):
-    """Creates an instance of a  CNN model """
-    op_units, op_activation = _get_last_layer_units_and_activation(num_classes)
+              num_labels,
+              num_features):
+    op_units, op_activation = get_lastlayer_activation_function(num_labels)
 
-    print("activiation function", op_activation)
-    print("op_units", op_units)
     model = models.Sequential()
 
-    # Add embedding layer. If pre-trained embedding is used add weights to the
-    # embeddings layer and set trainable to input is_embedding_trainable flag.
-    if use_pretrained_embedding:
-        model.add(Embedding(input_dim=num_features,
-                            output_dim=embedding_dim,
-                            input_length=input_shape[0],
-                            weights=[embedding_matrix],
-                            trainable=is_embedding_trainable))
-    else:
-        model.add(Embedding(input_dim=num_features,
+    model.add(Embedding(input_dim=num_features,
                             output_dim=embedding_dim,
                             input_length=input_shape[0]))
 
@@ -94,12 +77,11 @@ def cnn_model(blocks,
 
 
 def rnn_model(embedding_dim,
-                 dropout_rate,
                  input_shape,
                  num_classes,
                  num_features):
 
-    op_units, op_activation = _get_last_layer_units_and_activation(num_classes)
+    op_units, op_activation = get_lastlayer_activation_function(num_classes)
     model = models.Sequential()
     model.add(Embedding(input_dim=num_features,
                         output_dim=embedding_dim,
@@ -116,7 +98,7 @@ def biLstm_model(embedding_dim,
                  num_classes,
                  num_features):
 
-    op_units, op_activation = _get_last_layer_units_and_activation(num_classes)
+    op_units, op_activation = get_lastlayer_activation_function(num_classes)
     model = models.Sequential()
     model.add(Embedding(input_dim=num_features,
                         output_dim=embedding_dim,
@@ -128,15 +110,8 @@ def biLstm_model(embedding_dim,
     return model
 
 
-def _get_last_layer_units_and_activation(num_classes):
-    """Gets the # units and activation function for the last network layer.
+def get_lastlayer_activation_function(num_classes):
 
-    # Arguments
-        num_classes: int, number of classes.
-
-    # Returns
-        units, activation values.
-    """
     if num_classes == 2:
         activation = 'sigmoid'
         units = 1

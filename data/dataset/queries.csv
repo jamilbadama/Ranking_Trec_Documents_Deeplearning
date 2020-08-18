@@ -1,26 +1,26 @@
 Gene,Demographic,Query
-BRAF (V600E),64-year-old male,BRAF V600E in old adult males
-BRAF (V600K),54-year-old male,BRAF V600K in middle adult males
-BRAF (V600R),80-year-old male,BRAF V600R in middle old males
-BRAF (K601E),38-year-old male,BRAF K601E in adult males
-"BRAF (V600E), PTEN loss of function",57-year-old male,BRAF V600E PTEN loss of function in old adult males
-"BRAF (V600E), NRAS (Q61R)",67-year-old male,BRAF V600E NRAS Q61R in old males
-BRAF amplification,61-year-old male,BRAF amplification in old adult males
-NRAS (Q61R),63-year-old female,NRAS Q61R in old adult females
-NRAS (Q61L),34-year-old female,NRAS Q61L in adult females
-KIT (L576P),65-year-old female,KIT L576P in old adult females
-"KIT (L576P), KIT amplification",56-year-old female,KIT L576P KIT amplification in old adult females
-KIT (K642E),62-year-old female,KIT K642E in old adult females
-KIT (N822Y),39-year-old female,KIT N822Y in adult females
-KIT amplification,66-year-old female,KIT amplification in old adult females
-NF1 truncation,70-year-old male,NF1 truncation in old adult males
-NTRK1 rearrangement,60-year-old male,NTRK1 rearrangement in old adult males
-TP53 loss of function,72-year-old male,TP53 loss of function in old adult males
-tumor cells with >50% membranous PD-L1 expression,48-year-old female,tumor cells with >50% membranous PD-L1 expression in adult females
-tumor cells negative for PD-L1 expression,73-year-old male,tumor cells negative for PD-L1 expression in old adult males
-high tumor mutational burden,86-year-old female,high tumor mutational burden in old adult males
-extensive tumor infiltrating lymphocytes,49-year-old male,extensive tumor infiltrating lymphocytes in adult males
-no tumor infiltrating lymphocytes,74-year-old female,no tumor infiltrating lymphocytes in old adult females
-PTEN loss of function,68-year-old male,PTEN loss of function in old adult males
-APC loss of function,47-year-old male,APC loss of function in adult males
-high serum LDH levels,69-year-old female,high serum LDH levels in old adult females
+BRAF (V600E),64-year-old male,Melanoma BRAF V600E in old adult males
+BRAF (V600K),54-year-old male,Melanoma BRAF V600K in middle adult males 
+BRAF (V600R),80-year-old male,Melanoma BRAF V600R in middle old males
+BRAF (K601E),38-year-old male,MelanomaBRAF K601E in adult males
+"BRAF (V600E), PTEN loss of function",57-year-old male,Melanoma BRAF V600E PTEN loss of function in old adult males
+"BRAF (V600E), NRAS (Q61R)",67-year-old male,Melanoma BRAF V600E NRAS Q61R in old males
+BRAF amplification,61-year-old male,Melanoma BRAF amplification in old adult males
+NRAS (Q61R),63-year-old female,Melanoma NRAS Q61R in old adult females
+NRAS (Q61L),34-year-old female,Melanoma NRAS Q61L in adult females
+KIT (L576P),65-year-old female,Melanoma KIT L576P in old adult females
+"KIT (L576P), KIT amplification",56-year-old female,Melanoma KIT L576P KIT amplification in old adult females
+KIT (K642E),62-year-old female,Melanoma KIT K642E in old adult females
+KIT (N822Y),39-year-old female,Melanoma KIT N822Y in adult females
+KIT amplification,66-year-old female,Melanoma KIT amplification in old adult females
+NF1 truncation,70-year-old male,Melanoma NF1 truncation in old adult males
+NTRK1 rearrangement,60-year-old male,Melanoma NTRK1 rearrangement in old adult males
+TP53 loss of function,72-year-old male,Melanoma TP53 loss of function in old adult males
+tumor cells with >50% membranous PD-L1 expression,48-year-old female,Melanoma tumor cells with >50% membranous PD-L1 expression in adult females
+tumor cells negative for PD-L1 expression,73-year-old male,Melanoma tumor cells negative for PD-L1 expression in old adult males
+high tumor mutational burden,86-year-old female,Melanoma high tumor mutational burden in old adult males
+extensive tumor infiltrating lymphocytes,49-year-old male,Melanoma extensive tumor infiltrating lymphocytes in adult males
+no tumor infiltrating lymphocytes,74-year-old female,Melanoma no tumor infiltrating lymphocytes in old adult females
+PTEN loss of function,68-year-old male,Melanoma PTEN loss of function in old adult males
+APC loss of function,47-year-old male,Melanoma APC loss of function in adult males
+high serum LDH levels,69-year-old female,Melanoma high serum LDH levels in old adult females
