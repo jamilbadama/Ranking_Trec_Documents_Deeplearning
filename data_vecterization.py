@@ -8,6 +8,8 @@ topk = 10000
 
 MAX_SEQUENCE_LENGTH = 500
 
+""" vectorize_by_sequence function copied from @link https://github.com/google/eng-edu/tree/master/ml/guides/text_classification"""
+
 def vectorize_by_sequence(train_texts, val_texts):
 
     tokenizer = text.Tokenizer(num_words=topk)
