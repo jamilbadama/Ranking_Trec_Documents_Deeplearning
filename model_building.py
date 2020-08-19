@@ -23,7 +23,7 @@ def bert_model():
 
     return model
 
-
+"""The cnn_model layer arragement copied  from @link https://github.com/google/eng-edu/tree/master/ml/guides/text_classification"""
 def cnn_model(blocks,
               filters,
               kernel_size,
